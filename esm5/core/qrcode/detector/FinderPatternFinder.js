@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+/*namespace com.google.zxing.qrcode.detector {*/
+var DecodeHintType_1 = require("../../DecodeHintType");
 var ResultPoint_1 = require("../../ResultPoint");
 var FinderPattern_1 = require("./FinderPattern");
 var FinderPatternInfo_1 = require("./FinderPatternInfo");
@@ -56,8 +58,8 @@ var FinderPatternFinder = /** @class */ (function () {
         return this.possibleCenters;
     };
     FinderPatternFinder.prototype.find = function (hints) {
-        var tryHarder = (hints !== null && hints !== undefined) && undefined !== hints.get(3 /* TRY_HARDER */);
-        var pureBarcode = (hints !== null && hints !== undefined) && undefined !== hints.get(1 /* PURE_BARCODE */);
+        var tryHarder = (hints !== null && hints !== undefined) && undefined !== hints.get(DecodeHintType_1.default.TRY_HARDER);
+        var pureBarcode = (hints !== null && hints !== undefined) && undefined !== hints.get(DecodeHintType_1.default.PURE_BARCODE);
         var image = this.image;
         var maxI = image.getHeight();
         var maxJ = image.getWidth();

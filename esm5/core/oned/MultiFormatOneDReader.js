@@ -32,6 +32,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var BarcodeFormat_1 = require("../BarcodeFormat");
 var Code39Reader_1 = require("./Code39Reader");
 var Code128Reader_1 = require("./Code128Reader");
+var DecodeHintType_1 = require("../DecodeHintType");
 var ITFReader_1 = require("./ITFReader");
 var MultiFormatUPCEANReader_1 = require("./MultiFormatUPCEANReader");
 var NotFoundException_1 = require("../NotFoundException");
@@ -45,8 +46,8 @@ var MultiFormatOneDReader = /** @class */ (function (_super) {
     function MultiFormatOneDReader(hints) {
         var _this = _super.call(this) || this;
         _this.readers = [];
-        var possibleFormats = !hints ? null : hints.get(2 /* POSSIBLE_FORMATS */);
-        var useCode39CheckDigit = hints && hints.get(6 /* ASSUME_CODE_39_CHECK_DIGIT */) !== undefined;
+        var possibleFormats = !hints ? null : hints.get(DecodeHintType_1.default.POSSIBLE_FORMATS);
+        var useCode39CheckDigit = hints && hints.get(DecodeHintType_1.default.ASSUME_CODE_39_CHECK_DIGIT) !== undefined;
         if (possibleFormats) {
             if (possibleFormats.includes(BarcodeFormat_1.default.EAN_13)) {
                 _this.readers.push(new MultiFormatUPCEANReader_1.default(hints));

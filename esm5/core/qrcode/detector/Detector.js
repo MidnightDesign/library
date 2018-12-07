@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+/*namespace com.google.zxing.qrcode.detector {*/
+var DecodeHintType_1 = require("../../DecodeHintType");
 var ResultPoint_1 = require("../../ResultPoint");
 var DetectorResult_1 = require("../../common/DetectorResult");
 var GridSamplerInstance_1 = require("../../common/GridSamplerInstance");
@@ -61,7 +63,7 @@ var Detector = /** @class */ (function () {
      */
     Detector.prototype.detect = function (hints) {
         this.resultPointCallback = (hints === null || hints === undefined) ? null :
-            /*(ResultPointCallback) */ hints.get(9 /* NEED_RESULT_POINT_CALLBACK */);
+            /*(ResultPointCallback) */ hints.get(DecodeHintType_1.default.NEED_RESULT_POINT_CALLBACK);
         var finder = new FinderPatternFinder_1.default(this.image, this.resultPointCallback);
         var info = finder.find(hints);
         return this.processFinderPatternInfo(info);

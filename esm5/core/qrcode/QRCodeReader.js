@@ -17,6 +17,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /*namespace com.google.zxing.qrcode {*/
 var BarcodeFormat_1 = require("../BarcodeFormat");
+var DecodeHintType_1 = require("../DecodeHintType");
 var Result_1 = require("../Result");
 var ResultMetadataType_1 = require("../ResultMetadataType");
 var BitMatrix_1 = require("../common/BitMatrix");
@@ -54,7 +55,7 @@ var QRCodeReader = /** @class */ (function () {
     QRCodeReader.prototype.decode = function (image, hints) {
         var decoderResult;
         var points;
-        if (hints !== undefined && hints !== null && undefined !== hints.get(1 /* PURE_BARCODE */)) {
+        if (hints !== undefined && hints !== null && undefined !== hints.get(DecodeHintType_1.default.PURE_BARCODE)) {
             var bits = QRCodeReader.extractPureBits(image.getBlackMatrix());
             decoderResult = this.decoder.decodeBitMatrix(bits, hints);
             points = QRCodeReader.NO_POINTS;

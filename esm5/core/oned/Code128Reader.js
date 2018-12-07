@@ -30,6 +30,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 /*namespace com.google.zxing.oned {*/
 var BarcodeFormat_1 = require("../BarcodeFormat");
+var DecodeHintType_1 = require("../DecodeHintType");
 var Result_1 = require("../Result");
 var ResultPoint_1 = require("../ResultPoint");
 var OneDReader_1 = require("./OneDReader");
@@ -110,7 +111,7 @@ var Code128Reader = /** @class */ (function (_super) {
         }
     };
     Code128Reader.prototype.decodeRow = function (rowNumber, row, hints) {
-        var convertFNC1 = hints && (hints.get(7 /* ASSUME_GS1 */) === true);
+        var convertFNC1 = hints && (hints.get(DecodeHintType_1.default.ASSUME_GS1) === true);
         var startPatternInfo = Code128Reader.findStartPattern(row);
         var startCode = startPatternInfo[2];
         var currentRawCodesIndex = 0;

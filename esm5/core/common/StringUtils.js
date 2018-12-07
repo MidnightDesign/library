@@ -15,6 +15,10 @@
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+/*namespace com.google.zxing.common {*/
+/*import java.nio.charset.Charset;*/
+/*import java.util.Map;*/
+var DecodeHintType_1 = require("../DecodeHintType");
 var CharacterSetECI_1 = require("./CharacterSetECI");
 /**
  * Common string-related functions.
@@ -36,8 +40,8 @@ var StringUtils = /** @class */ (function () {
      *  default encoding if none of these can possibly be correct
      */
     StringUtils.guessEncoding = function (bytes, hints) {
-        if (hints !== null && hints !== undefined && undefined !== hints.get(4 /* CHARACTER_SET */)) {
-            return hints.get(4 /* CHARACTER_SET */).toString();
+        if (hints !== null && hints !== undefined && undefined !== hints.get(DecodeHintType_1.default.CHARACTER_SET)) {
+            return hints.get(DecodeHintType_1.default.CHARACTER_SET).toString();
         }
         // For now, merely tries to distinguish ISO-8859-1, UTF-8 and Shift_JIS,
         // which should be by far the most common encodings.

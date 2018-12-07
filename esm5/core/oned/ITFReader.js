@@ -30,6 +30,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 /*namespace com.google.zxing.oned {*/
 var BarcodeFormat_1 = require("../BarcodeFormat");
+var DecodeHintType_1 = require("../DecodeHintType");
 var Result_1 = require("../Result");
 var ResultPoint_1 = require("../ResultPoint");
 var OneDReader_1 = require("./OneDReader");
@@ -66,7 +67,7 @@ var ITFReader = /** @class */ (function (_super) {
         var resultString = result.toString();
         var allowedLengths = null;
         if (hints != null) {
-            allowedLengths = hints.get(5 /* ALLOWED_LENGTHS */);
+            allowedLengths = hints.get(DecodeHintType_1.default.ALLOWED_LENGTHS);
         }
         if (allowedLengths == null) {
             allowedLengths = ITFReader.DEFAULT_ALLOWED_LENGTHS;

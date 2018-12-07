@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Decoder_1 = require("./decoder/Decoder");
 var Result_1 = require("../Result");
 var BarcodeFormat_1 = require("../BarcodeFormat");
+var DecodeHintType_1 = require("../DecodeHintType");
 var ResultMetadataType_1 = require("../ResultMetadataType");
 var BitMatrix_1 = require("../common/BitMatrix");
 var Detector_1 = require("./detector/Detector");
@@ -49,7 +50,7 @@ var DataMatrixReader = /** @class */ (function () {
         if (hints === void 0) { hints = null; }
         var decoderResult;
         var points;
-        if (hints != null && hints.has(1 /* PURE_BARCODE */)) {
+        if (hints != null && hints.has(DecodeHintType_1.default.PURE_BARCODE)) {
             var bits = DataMatrixReader.extractPureBits(image.getBlackMatrix());
             decoderResult = this.decoder.decode(bits);
             points = DataMatrixReader.NO_POINTS;

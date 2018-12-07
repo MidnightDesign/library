@@ -29,6 +29,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var BarcodeFormat_1 = require("../BarcodeFormat");
+var DecodeHintType_1 = require("../DecodeHintType");
 var Result_1 = require("../Result");
 var ResultMetadataType_1 = require("../ResultMetadataType");
 var ResultPoint_1 = require("../ResultPoint");
@@ -92,7 +93,7 @@ var UPCEANReader = /** @class */ (function (_super) {
     };
     UPCEANReader.prototype.decodeRow = function (rowNumber, row, hints) {
         var startGuardRange = UPCEANReader.findStartGuardPattern(row);
-        var resultPointCallback = hints == null ? null : hints.get(9 /* NEED_RESULT_POINT_CALLBACK */);
+        var resultPointCallback = hints == null ? null : hints.get(DecodeHintType_1.default.NEED_RESULT_POINT_CALLBACK);
         if (resultPointCallback != null) {
             var resultPoint_1 = new ResultPoint_1.default((startGuardRange[0] + startGuardRange[1]) / 2.0, rowNumber);
             resultPointCallback.foundPossibleResultPoint(resultPoint_1);
@@ -139,7 +140,7 @@ var UPCEANReader = /** @class */ (function (_super) {
         }
         catch (err) {
         }
-        var allowedExtensions = hints == null ? null : hints.get(10 /* ALLOWED_EAN_EXTENSIONS */);
+        var allowedExtensions = hints == null ? null : hints.get(DecodeHintType_1.default.ALLOWED_EAN_EXTENSIONS);
         if (allowedExtensions != null) {
             var valid = false;
             for (var length_1 in allowedExtensions) {

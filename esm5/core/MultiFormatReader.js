@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+var DecodeHintType_1 = require("./DecodeHintType");
 var BarcodeFormat_1 = require("./BarcodeFormat");
 var QRCodeReader_1 = require("./qrcode/QRCodeReader");
 var MultiFormatOneDReader_1 = require("./oned/MultiFormatOneDReader");
@@ -87,9 +88,9 @@ var MultiFormatReader = /** @class */ (function () {
      */
     MultiFormatReader.prototype.setHints = function (hints) {
         this.hints = hints;
-        var tryHarder = hints !== null && hints !== undefined && undefined !== hints.get(3 /* TRY_HARDER */);
+        var tryHarder = hints !== null && hints !== undefined && undefined !== hints.get(DecodeHintType_1.default.TRY_HARDER);
         /*@SuppressWarnings("unchecked")*/
-        var formats = hints === null || hints === undefined ? null : hints.get(2 /* POSSIBLE_FORMATS */);
+        var formats = hints === null || hints === undefined ? null : hints.get(DecodeHintType_1.default.POSSIBLE_FORMATS);
         var readers = new Array();
         if (formats !== null && formats !== undefined) {
             var addOneDReader = formats.some(function (f) {

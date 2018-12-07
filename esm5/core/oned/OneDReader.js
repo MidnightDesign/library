@@ -16,6 +16,7 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 var BitArray_1 = require("../common/BitArray");
+var DecodeHintType_1 = require("../DecodeHintType");
 var ResultMetadataType_1 = require("../ResultMetadataType");
 var ResultPoint_1 = require("../ResultPoint");
 var NotFoundException_1 = require("../NotFoundException");
@@ -42,7 +43,7 @@ var OneDReader = /** @class */ (function () {
             return this.doDecode(image, hints);
         }
         catch (nfe) {
-            var tryHarder = hints && (hints.get(3 /* TRY_HARDER */) === true);
+            var tryHarder = hints && (hints.get(DecodeHintType_1.default.TRY_HARDER) === true);
             if (tryHarder && image.isRotateSupported()) {
                 var rotatedImage = image.rotateCounterClockwise();
                 var result = this.doDecode(rotatedImage, hints);
@@ -91,7 +92,7 @@ var OneDReader = /** @class */ (function () {
         var width = image.getWidth();
         var height = image.getHeight();
         var row = new BitArray_1.default(width);
-        var tryHarder = hints && (hints.get(3 /* TRY_HARDER */) === true);
+        var tryHarder = hints && (hints.get(DecodeHintType_1.default.TRY_HARDER) === true);
         var rowStep = Math.max(1, height >> (tryHarder ? 8 : 5));
         var maxLines;
         if (tryHarder) {
@@ -124,10 +125,10 @@ var OneDReader = /** @class */ (function () {
                     // since we want to avoid drawing the wrong points after flipping the row, and,
                     // don't want to clutter with noise from every single row scan -- just the scans
                     // that start on the center line.
-                    if (hints && (hints.get(9 /* NEED_RESULT_POINT_CALLBACK */) === true)) {
+                    if (hints && (hints.get(DecodeHintType_1.default.NEED_RESULT_POINT_CALLBACK) === true)) {
                         var newHints_1 = new Map();
                         hints.forEach(function (hint, key) { return newHints_1.set(key, hint); });
-                        newHints_1.delete(9 /* NEED_RESULT_POINT_CALLBACK */);
+                        newHints_1.delete(DecodeHintType_1.default.NEED_RESULT_POINT_CALLBACK);
                         hints = newHints_1;
                     }
                 }

@@ -29,6 +29,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var BarcodeFormat_1 = require("../BarcodeFormat");
+var DecodeHintType_1 = require("../DecodeHintType");
 var OneDReader_1 = require("./OneDReader");
 var EAN13Reader_1 = require("./EAN13Reader");
 var NotFoundException_1 = require("../NotFoundException");
@@ -43,7 +44,7 @@ var MultiFormatUPCEANReader = /** @class */ (function (_super) {
     __extends(MultiFormatUPCEANReader, _super);
     function MultiFormatUPCEANReader(hints) {
         var _this = _super.call(this) || this;
-        var possibleFormats = hints == null ? null : hints.get(2 /* POSSIBLE_FORMATS */);
+        var possibleFormats = hints == null ? null : hints.get(DecodeHintType_1.default.POSSIBLE_FORMATS);
         var readers = [];
         if (possibleFormats != null) {
             if (possibleFormats.indexOf(BarcodeFormat_1.default.EAN_13) > -1) {
